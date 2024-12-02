@@ -4,17 +4,28 @@ import java.util.List;
 
 public class AdventOfCodeDay1 {
     public static void main(String[] args) throws IOException {
-        System.out.println(simpleApproach(new File(args[0]))); // Pass in the filename as command line argument!!
+
+        /*
+        * The task is the following:
+        * You are given a file in which there are 2 numbers on each line, seperated by 3 spaces.
+        * Find the total sum of the differences of the pairs of numbers:
+        * Smallest number in first column paired with the smallest number in the second column,
+        * second smallest number in the first column paired with the second smallest number in the second column,
+        * etc.
+        * Where the difference is the absolute value of subtracting one number from the other.
+        * */
+
+        System.out.println(totalSumOfNumberPairings(new File(args[0]))); // Pass in the filename as command line argument!!
     }
 
     /**
-     * This method takes in the filename, does no error checks and just tries to parse ints from lines where 2 numbers are seperated by 3 spaces.
+     * This method takes in a filename, does no error checks and tries to parse ints from lines where 2 numbers are seperated by 3 spaces.
      * Method reads the numbers with BufferedReader, sorts the arrays, using builtin java methods, then adds up the differences and returns it
      * @param file - File type object of the input file, where numbers will be read from
      * @return Method returns the total difference of the n-th smallest numbers of the two columns of the input file text where n is from 1 to the total amount of lines.
      * @throws IOException Since the method does no error checking whether a file exists and if it tries to parse an int from a valid string, up to IOException might be thrown when making mistakes with the method call etc.
      */
-    public static long simpleApproach(File file) throws IOException {
+    public static long totalSumOfNumberPairings(File file) throws IOException {
         // The 2 arrays that will store all of the numbers from first and second column respectively of the input file text.
         List<Integer> firstColumnNumbers = new ArrayList<>();
         List<Integer> secondColumnNumbers = new ArrayList<>();

@@ -7,17 +7,25 @@ import java.util.Set;
 
 public class AdventOfCodeDay1Part2 {
     public static void main(String[] args) throws IOException {
-        System.out.println(simpleApproach(new File(args[0]))); // Need to specify the filename as command line argument!!
+
+        /*
+        * The task is the following:
+        * You are given a file with 2 numbers on each row, seperated by 3 spaces.
+        * Find the sum of all the similarity scores
+        * A similarity score a number that is calculated by multiplying the corresponding number in the first row by how many occurences it has in the second row
+        * */
+
+        System.out.println(totalSimilarityScore(new File(args[0]))); // Need to specify the filename as command line argument!!
     }
 
     /**
-     * Method takes in a file, does no error checks and returns the "similarityScore" - that is defined by the sum of every number in the first columns of the file
-     * multiplied by how many times it occurs in the second row.
+     * Method takes in a file, does no error checks and returns the "similarityScore" - that is defined by the sum of the following expression for every number in first column:
+     * number in the first column of the file multiplied by how many times it occurs in the second row.
      * @param file - The file from which the method tries to find 2 rows of numbers
      * @return Method returns sum of all the similarity scores for numbers of first column.
      * @throws IOException - This method does no error checking, up to IOException may be thrown when trying to read a file that doesn't excist.
      */
-    public static long simpleApproach(File file) throws IOException {
+    public static long totalSimilarityScore(File file) throws IOException {
         Set<Integer> integersInFirstColumn = new HashSet<>();
         Map<Integer, Integer> numberOfOccurencesForSecondColumn = new HashMap<>();
         try(BufferedReader bReader = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
