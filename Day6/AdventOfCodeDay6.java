@@ -103,7 +103,7 @@ public class AdventOfCodeDay6 {
             }
             // Otherwise move the guard
             tiles[guardPosition] = (byte)'X';
-            if (newPosition % lineLength == 0)
+            if (tiles[newPosition] == (byte)'\r' || tiles[newPosition] == (byte)'\n') // Linebreak takes up 2 characters
                 return 0; // Guard changed "rows" or has moved out of the map - newline isn't part of the map
             tiles[newPosition] = moveDirection == 1 ? (byte)'>':(byte)'<';
         }
