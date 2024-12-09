@@ -6,15 +6,16 @@ import java.util.Map;
 
 public class AdventOfCodeDay6Part2 {
     public static void main(String[] args) throws IOException {
-        /*
-         * Try adding an obstacle to a tile that doesn't have it yet. See if guard gets stuck in a loop.
-         * Loop over all the options.
-         * When moving, create a hashmap for int-current tile and int[]-moved to.
-         * */
-        long start = System.currentTimeMillis();
+	/*
+	* For puzzle input, you are given a map where ^ is the guard (moving up initially), . is an empty tile and # is an obstacle.
+	* Guard follows the following rules for moving:
+	* - If the tile straight ahead is empty, move there
+	* - If the tile straight ahead is an obstacle, turn right 90 degrees
+	*
+	* You can only place 1 extra obstacle to the ones that already exist.
+	* How many possible ways are there to place an obstacle such that the guard would get stuck in some loop and not exit the map?
+	*/
         System.out.println(howManyPossibleLoops(new File(args[0])));
-        long end = System.currentTimeMillis();
-        System.out.println(end-start);
     }
 
     private static int howManyPossibleLoops(File file) throws IOException {
